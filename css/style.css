@@ -1,0 +1,79 @@
+/* The color of the page is purple */
+html {
+  background-color: #9FA5FF;
+  height: 100%;
+}
+/* The color of the body area is light purple and 70% of the whole page width */
+body {
+  background-color: #E2E3FF;
+  margin: 0 auto;
+  width: 70%;
+}
+/* Headers stylings.
+Main header is centered, the area is of purple color and has padding on top and bottom */
+h2 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  background-color: #c68de2;
+}
+h6 {
+  text-align: center;
+  margin-bottom: 0px;
+}
+/* Button stylings.
+The button backgroung is purple and the letters are black */
+.purple-background {
+  background-color:#c68de2;
+}
+.black {
+  color:#000000;
+}
+/* Form stylings.
+Input fields have 30 px height. No padding on left and right. */
+.inputfield{
+  height:30px;
+}
+.containerInput {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+/* Table stylings.
+Padding 20px on top and bottom. If the content is too big to fit the page then scroll options will appear.
+Height of the table is 400px. */
+.container {
+  padding: 20px 0;
+  overflow: scroll;
+  height: 400px;
+}
+
+#multTable {
+  margin: auto;
+}
+/* Table data and headers have 50px width, 20px font size and a solid border around each cell. */
+#multTable td, th {
+  width: 50px;
+  font-size: 20px;
+  border: 1px solid blue;
+}
+/* Every even table enrty is of white color for better readability. */
+#multTable td:nth-child(even) {
+  background-color: #ffffff;
+}
+/* Table headers have a special color. */
+#multTable th {
+  background-color: #9FA5FF;
+}
+/* Message stylings.
+It is centered and red.  */
+#message p{
+  color: red;
+  margin-bottom: 0px;
+  padding-top: 15px;
+  padding-left: 15px;
+  text-align: center;
+}
+/* Change color for jQuery messages  */
+.error {
+  color: red;
+}
