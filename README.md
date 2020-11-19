@@ -1,2 +1,2 @@
-Link to this assignment: https://asergienk.github.io/MultTable-jQuery/ <br />
-GitHub repository link: https://github.com/asergienk/MultTable-jQuery
+Link to this assignment: https://asergienk.github.io/MultTable-Jquery-Slider-and-Tabs/ <br />
+GitHub repository link: https://asergienk.github.io/MultTable-Jquery-Slider-and-Tabs/
