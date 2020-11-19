@@ -1,14 +1,44 @@
+$( document ).ready(function() {
+  $( "#tableTabs" ).tabs();
+
+  var tabs = [];
+  if(tabs.length > 0) {
+    //loop through tabs
+  }
+
+
 //Function to generate a multiplication table based on user's range input.
-function generateTable() {
-  //getting input values
-  var minCol = parseInt(document.getElementById("minCol").value);
-  var maxCol = parseInt(document.getElementById("maxCol").value);
-  var minRow = parseInt(document.getElementById("minRow").value);
-  var maxRow = parseInt(document.getElementById("maxRow").value);
+function generateTable(minCol, maxCol, minRow, maxRow) {
+  let tabsList = document.getElementById("tabsList");
+  let tableTabs = document.getElementById("tableTabs");
+
+  let tabObject = { 
+    name: tabs.length, 
+    minCol: minCol,
+    maxCol: maxCol,
+    minRow: minRow,
+    maxRow: maxRow
+  };
+  tabs.push(tabObject);
+
+  let listItem = document.createElement("li");
+  let anchor = document.createElement("a");
+  anchor.href = `#tab-${tabs.length-1}`;
+  anchor.innerText = `tab-${tabs.length-1}`;
+  listItem.appendChild(anchor);
+  tabsList.appendChild(listItem);
+  listItem.classList.add("ui-tabs-tab");
+
+  let tableDiv = document.createElement("div");
+  tableDiv.id = `tab-${tabs.length-1}`;
+  tableTabs.appendChild(tableDiv);
+
+
+
   var error = document.getElementById("message");
 
 
-  var table = document.getElementById("multTable");
+  var table = document.createElement("table");
   var result = "";
   //creating a multTable
   for(var i=minRow; i<=maxRow;i++)
@@ -49,7 +79,8 @@ function generateTable() {
     }
   //printing the table
   table.innerHTML=result;
-
+  tableDiv.appendChild(table);
+  $("#tableTabs").tabs("option", "active", tabs.length-1);
   return false;
 }
 
@@ -137,7 +168,11 @@ $(function() {
     },//end messages
     //Only submits the form if the input is valid
     submitHandler: function(form) {
-      generateTable();
+      var minCol = parseInt(document.getElementById("minCol").value);
+      var maxCol = parseInt(document.getElementById("maxCol").value);
+      var minRow = parseInt(document.getElementById("minRow").value);
+      var maxRow = parseInt(document.getElementById("maxRow").value);
+      generateTable(minCol, maxCol, minRow, maxRow);
       return false;
     }
   });//end validate
@@ -200,3 +235,6 @@ $("#maxRow").change(function() {
 
 
 });//end function
+
+
+});
