@@ -1,11 +1,9 @@
 $( document ).ready(function() {
-  $( "#tableTabs" ).tabs();
 
   var tabs = [];
   if(tabs.length > 0) {
     //loop through tabs
   }
-
 
 //Function to generate a multiplication table based on user's range input.
 function generateTable(minCol, maxCol, minRow, maxRow) {
@@ -33,10 +31,7 @@ function generateTable(minCol, maxCol, minRow, maxRow) {
   tableDiv.id = `tab-${tabs.length-1}`;
   tableTabs.appendChild(tableDiv);
 
-
-
   var error = document.getElementById("message");
-
 
   var table = document.createElement("table");
   var result = "";
@@ -80,7 +75,13 @@ function generateTable(minCol, maxCol, minRow, maxRow) {
   //printing the table
   table.innerHTML=result;
   tableDiv.appendChild(table);
-  $("#tableTabs").tabs("option", "active", tabs.length-1);
+  
+  //re-initialization of the tabs
+  if ($('#tableTabs').tabs()) {
+    $("#tableTabs").tabs('destroy');
+  }
+
+  $("#tableTabs").tabs( { "active" : tabs.length-1});
   return false;
 }
 
