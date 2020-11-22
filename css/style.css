@@ -7,7 +7,7 @@ html {
 body {
   background-color: #E2E3FF;
   margin: 0 auto;
-  width: 70%;
+  width: 100%;
 }
 /* Headers stylings.
 Main header is centered, the area is of purple color and has padding on top and bottom */
@@ -49,6 +49,7 @@ Height of the table is 400px. */
 
 #multTable {
   margin: auto;
+  border-collapse: collapse;
 }
 /* Table data and headers have 50px width, 20px font size and a solid border around each cell. */
 #multTable td, th {
@@ -56,10 +57,33 @@ Height of the table is 400px. */
   font-size: 20px;
   border: 1px solid blue;
 }
-/* Every even table enrty is of white color for better readability. */
-#multTable td:nth-child(even) {
-  background-color: #ffffff;
+
+#multTable td {
+  font-size: 17px;
 }
+/* Every even table enrty is of white color for better readability. */
+/*
+#multTable tr td:nth-child(even) {
+  background-color: #FFFFFF;
+}
+
+#multTable tr td:nth-child(odd) {
+  background-color:  #9FA5FF;
+}
+*/
+
+#multTable tr:nth-child(odd) td:nth-child(odd) {
+  background-color: #9FA5FF;
+}
+
+#multTable tr:nth-child(even) td:nth-child(even) {
+  background-color:  #9FA5FF;
+}
+
+
+
+
+
 /* Table headers have a special color. */
 #multTable th {
   background-color: #9FA5FF;
@@ -76,4 +100,32 @@ It is centered and red.  */
 /* Change color for jQuery messages  */
 .error {
   color: red;
+}
+
+#tableTabs {
+  width: 70%;
+  display: block;
+  margin: 10px auto;
+  overflow: scroll;
+}
+
+#tabsList li {
+  position: relative;
+}
+
+#tabsList li .closeButton {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  font-size: 12px;
+  color: #000;
+  z-index: 999;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
