@@ -20,12 +20,24 @@ function generateTable(minCol, maxCol, minRow, maxRow) {
   tabs.push(tabObject);
 
   let listItem = document.createElement("li");
+  let closeButton = document.createElement("div");
+  closeButton.innerText = "x";
+  closeButton.classList.add("closeButton");
   let anchor = document.createElement("a");
   anchor.href = `#tab-${tabs.length-1}`;
-  anchor.innerText = `tab-${tabs.length-1}`;
+  anchor.innerText = `${minCol} to ${maxCol} x ${minRow} to ${maxRow}`;
   listItem.appendChild(anchor);
+  listItem.appendChild(closeButton);
   tabsList.appendChild(listItem);
   listItem.classList.add("ui-tabs-tab");
+
+  closeButton.dataset.tab=`tab-${tabs.length-1}`;
+
+  closeButton.addEventListener("click", e=>{
+    console.log(e);
+    $(`li[aria-controls='${e.target.dataset.tab}']`).remove();
+    $(`#${e.target.dataset.tab}`).remove();
+  })
 
   let tableDiv = document.createElement("div");
   tableDiv.id = `tab-${tabs.length-1}`;
@@ -34,6 +46,7 @@ function generateTable(minCol, maxCol, minRow, maxRow) {
   var error = document.getElementById("message");
 
   var table = document.createElement("table");
+  table.id = "multTable";
   var result = "";
   //creating a multTable
   for(var i=minRow; i<=maxRow;i++)
@@ -82,6 +95,29 @@ function generateTable(minCol, maxCol, minRow, maxRow) {
   }
 
   $("#tableTabs").tabs( { "active" : tabs.length-1});
+
+
+  $('#removeAllTabs').on( 'click', function() {
+    //removes the tables in tabs
+    $(".ui-tabs-panel").remove();
+    $("#tabsList").empty();
+
+
+});
+/*
+function removeTab(tabId) {
+  var tabIdStr = "#tabs-" + tabId
+
+  // Remove the panel
+  $( tabIdStr ).remove();
+  // Refresh the tabs widget
+  tabs.tabs( "refresh" );
+
+  // Remove the tab
+  var hrefStr = "a[href='" + tabIdStr + "']"
+  $( hrefStr ).closest("li").remove()
+}
+*/
   return false;
 }
 
