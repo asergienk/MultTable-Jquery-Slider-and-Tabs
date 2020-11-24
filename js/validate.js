@@ -5,7 +5,7 @@
  Anna Sergienko, UMass Lowell Computer Science, anna_sergienko@student.uml.edu
  Copyright (c) 2020 by Anna Sergienko. All rights reserved. May be
  freely copied or excerpted for educational purposes with credit to the author.
- updated by AS on November 24, 2020 at 9:30 PM
+ updated by AS on November 24, 2020 at 12:30 PM
 */
 
 $( document ).ready(function() {
@@ -40,6 +40,7 @@ function generateTable(minCol, maxCol, minRow, maxRow) {
   tabsList.appendChild(listItem);
   listItem.classList.add("ui-tabs-tab");
 
+  //close button
   closeButton.dataset.tab=`tab-${tabs.length-1}`;
 
   closeButton.addEventListener("click", e=>{
