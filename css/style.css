@@ -1,14 +1,26 @@
+/*
+ Link to this assignment: https://asergienk.github.io/MultTable-Jquery-Slider-and-Tabs/
+ GitHub repository link: https://asergienk.github.io/MultTable-Jquery-Slider-and-Tabs/
+ 91.61 Assignment: Multiplication Table with jQuery
+ Anna Sergienko, UMass Lowell Computer Science, anna_sergienko@student.uml.edu
+ Copyright (c) 2020 by Anna Sergienko. All rights reserved. May be
+ freely copied or excerpted for educational purposes with credit to the author.
+ updated by AS on November 24, 2020 at 9:30 PM
+*/
+
 /* The color of the page is purple */
 html {
   background-color: #9FA5FF;
   height: 100%;
 }
+
 /* The color of the body area is light purple and 70% of the whole page width */
 body {
   background-color: #E2E3FF;
   margin: 0 auto;
   width: 100%;
 }
+
 /* Headers stylings.
 Main header is centered, the area is of purple color and has padding on top and bottom */
 h2 {
@@ -17,27 +29,33 @@ h2 {
   text-align: center;
   background-color: #c68de2;
 }
+
 h6 {
   text-align: center;
   margin-bottom: 0px;
 }
+
 /* Button stylings.
 The button backgroung is purple and the letters are black */
 .purple-background {
   background-color:#c68de2;
 }
+
 .black {
   color:#000000;
 }
+
 /* Form stylings.
 Input fields have 30 px height. No padding on left and right. */
 .inputfield{
   height:30px;
 }
+
 .containerInput {
   padding-left: 0px;
   padding-right: 0px;
 }
+
 /* Table stylings.
 Padding 20px on top and bottom. If the content is too big to fit the page then scroll options will appear.
 Height of the table is 400px. */
@@ -51,6 +69,7 @@ Height of the table is 400px. */
   margin: auto;
   border-collapse: collapse;
 }
+
 /* Table data and headers have 50px width, 20px font size and a solid border around each cell. */
 #multTable td, th {
   width: 50px;
@@ -61,35 +80,23 @@ Height of the table is 400px. */
 #multTable td {
   font-size: 17px;
 }
-/* Every even table enrty is of white color for better readability. */
-/*
-#multTable tr td:nth-child(even) {
-  background-color: #FFFFFF;
-}
 
-#multTable tr td:nth-child(odd) {
-  background-color:  #9FA5FF;
-}
-*/
-
+/* Color of table data is alternating. */
 #multTable tr:nth-child(odd) td:nth-child(odd) {
-  background-color: #9FA5FF;
+  background-color:#E2E3FF;
 }
 
 #multTable tr:nth-child(even) td:nth-child(even) {
-  background-color:  #9FA5FF;
+  background-color:  #E2E3FF;
 }
-
-
-
-
 
 /* Table headers have a special color. */
 #multTable th {
   background-color: #9FA5FF;
 }
+
 /* Message stylings.
-It is centered and red.  */
+It is centered and red. */
 #message p{
   color: red;
   margin-bottom: 0px;
@@ -97,11 +104,13 @@ It is centered and red.  */
   padding-left: 15px;
   text-align: center;
 }
-/* Change color for jQuery messages  */
+
+/* Change color for jQuery messages. */
 .error {
   color: red;
 }
 
+/* Table tabs styling. */
 #tableTabs {
   width: 70%;
   display: block;
@@ -113,6 +122,7 @@ It is centered and red.  */
   position: relative;
 }
 
+/* Styling of button to close one individual tab. */
 #tabsList li .closeButton {
   position: absolute;
   top: 0px;

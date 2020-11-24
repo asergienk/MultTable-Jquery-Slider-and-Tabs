@@ -1,15 +1,23 @@
+/*
+ Link to this assignment: https://asergienk.github.io/MultTable-Jquery-Slider-and-Tabs/
+ GitHub repository link: https://asergienk.github.io/MultTable-Jquery-Slider-and-Tabs/
+ 91.61 Assignment: Multiplication Table with jQuery
+ Anna Sergienko, UMass Lowell Computer Science, anna_sergienko@student.uml.edu
+ Copyright (c) 2020 by Anna Sergienko. All rights reserved. May be
+ freely copied or excerpted for educational purposes with credit to the author.
+ updated by AS on November 24, 2020 at 9:30 PM
+*/
+
 $( document ).ready(function() {
 
   var tabs = [];
-  if(tabs.length > 0) {
-    //loop through tabs
-  }
-
+ 
 //Function to generate a multiplication table based on user's range input.
 function generateTable(minCol, maxCol, minRow, maxRow) {
   let tabsList = document.getElementById("tabsList");
   let tableTabs = document.getElementById("tableTabs");
 
+  //creating table object
   let tabObject = { 
     name: tabs.length, 
     minCol: minCol,
@@ -19,13 +27,14 @@ function generateTable(minCol, maxCol, minRow, maxRow) {
   };
   tabs.push(tabObject);
 
+  //creating new elements
   let listItem = document.createElement("li");
   let closeButton = document.createElement("div");
   closeButton.innerText = "x";
   closeButton.classList.add("closeButton");
   let anchor = document.createElement("a");
   anchor.href = `#tab-${tabs.length-1}`;
-  anchor.innerText = `${minCol} to ${maxCol} x ${minRow} to ${maxRow}`;
+  anchor.innerText = `[${minCol},${maxCol}] x [${minRow},${maxRow}]`;
   listItem.appendChild(anchor);
   listItem.appendChild(closeButton);
   tabsList.appendChild(listItem);
@@ -101,23 +110,8 @@ function generateTable(minCol, maxCol, minRow, maxRow) {
     //removes the tables in tabs
     $(".ui-tabs-panel").remove();
     $("#tabsList").empty();
+  });
 
-
-});
-/*
-function removeTab(tabId) {
-  var tabIdStr = "#tabs-" + tabId
-
-  // Remove the panel
-  $( tabIdStr ).remove();
-  // Refresh the tabs widget
-  tabs.tabs( "refresh" );
-
-  // Remove the tab
-  var hrefStr = "a[href='" + tabIdStr + "']"
-  $( hrefStr ).closest("li").remove()
-}
-*/
   return false;
 }
 
@@ -171,6 +165,7 @@ $(function() {
         numberIsInteger: true
       }
     },
+    //Error messages
     messages: {
       minCol: {
         required: 'Please enter a Minimum Column Value.',
@@ -214,64 +209,63 @@ $(function() {
     }
   });//end validate
 
-$('.sliderMC').slider({
-  range: "max",
-  value: -50,
-  min: -50,
-  max: 50,
-  slide: function(event, ui) {
-    $( "#minCol" ).val( ui.value );
-    $(ui.value).val($('#minCol').val());
-  },
-});//end slider
-$("#minCol").change(function() {
-  $('.sliderMC').slider("value", $(this).val());
-});
+  //Sliders
+  $('.sliderMC').slider({
+    range: "max",
+    value: -50,
+    min: -50,
+    max: 50,
+    slide: function(event, ui) {
+      $( "#minCol" ).val( ui.value );
+      $(ui.value).val($('#minCol').val());
+    },
+  });
+  $("#minCol").change(function() {
+    $('.sliderMC').slider("value", $(this).val());
+  });
 
-$('.sliderMC2').slider({
-  range: "max",
-  value: -50,
-  min: -50,
-  max: 50,
-  slide: function(event, ui) {
-    $( "#maxCol" ).val( ui.value );
-    $(ui.value).val($('#maxCol').val());
-  },
-});//end slider
-$("#maxCol").change(function() {
-  $('.sliderMC2').slider("value", $(this).val());
-});
+  $('.sliderMC2').slider({
+    range: "max",
+    value: -50,
+    min: -50,
+    max: 50,
+    slide: function(event, ui) {
+      $( "#maxCol" ).val( ui.value );
+      $(ui.value).val($('#maxCol').val());
+    },
+  });
+  $("#maxCol").change(function() {
+    $('.sliderMC2').slider("value", $(this).val());
+  });
 
-$('.sliderMR').slider({
-  range: "max",
-  value: -50,
-  min: -50,
-  max: 50,
-  slide: function(event, ui) {
-    $( "#minRow" ).val( ui.value );
-    $(ui.value).val($('#minRow').val());
-  },
-});//end slider
-$("#minRow").change(function() {
-  $('.sliderMR').slider("value", $(this).val());
-});
+  $('.sliderMR').slider({
+    range: "max",
+    value: -50,
+    min: -50,
+    max: 50,
+    slide: function(event, ui) {
+      $( "#minRow" ).val( ui.value );
+      $(ui.value).val($('#minRow').val());
+    },
+  });
+  $("#minRow").change(function() {
+    $('.sliderMR').slider("value", $(this).val());
+  });
 
-$('.sliderMR2').slider({
-  range: "max",
-  value: -50,
-  min: -50,
-  max: 50,
-  slide: function(event, ui) {
-    $( "#maxRow" ).val( ui.value );
-    $(ui.value).val($('#maxRow').val());
-  },
-});//end slider
-$("#maxRow").change(function() {
-  $('.sliderMR2').slider("value", $(this).val());
-});
+  $('.sliderMR2').slider({
+    range: "max",
+    value: -50,
+    min: -50,
+    max: 50,
+    slide: function(event, ui) {
+      $( "#maxRow" ).val( ui.value );
+      $(ui.value).val($('#maxRow').val());
+    },
+  });
+  $("#maxRow").change(function() {
+    $('.sliderMR2').slider("value", $(this).val());
+  });
 
-
-});//end function
-
+  });//end function
 
 });
