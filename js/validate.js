@@ -9,49 +9,67 @@
 */
 
 $( document ).ready(function() {
+//function to print table dynamically when the slider values are changed
+function fillDynamicTable() {
+        var minCol = parseInt(document.getElementById("minCol").value);
+        var maxCol = parseInt(document.getElementById("maxCol").value);
+        var minRow = parseInt(document.getElementById("minRow").value);
+        var maxRow = parseInt(document.getElementById("maxRow").value);
+        generateTable(minCol, maxCol, minRow, maxRow, false);
+}
 
-  var tabs = [];
- 
+var tabs = [];
+  
 //Function to generate a multiplication table based on user's range input.
-function generateTable(minCol, maxCol, minRow, maxRow) {
+function generateTable(minCol, maxCol, minRow, maxRow, useTableTabs) {
+
   let tabsList = document.getElementById("tabsList");
   let tableTabs = document.getElementById("tableTabs");
+  let dynamicTable = document.getElementById("dynamicTable");
+  let tableDiv = "";
 
-  //creating table object
-  let tabObject = { 
-    name: tabs.length, 
-    minCol: minCol,
-    maxCol: maxCol,
-    minRow: minRow,
-    maxRow: maxRow
-  };
-  tabs.push(tabObject);
+  //clearing out the dynamic table
+  if(useTableTabs === false) {
+    dynamicTable.innerHTML = "";
+  }
 
-  //creating new elements
-  let listItem = document.createElement("li");
-  let closeButton = document.createElement("div");
-  closeButton.innerText = "x";
-  closeButton.classList.add("closeButton");
-  let anchor = document.createElement("a");
-  anchor.href = `#tab-${tabs.length-1}`;
-  anchor.innerText = `[${minCol},${maxCol}] x [${minRow},${maxRow}]`;
-  listItem.appendChild(anchor);
-  listItem.appendChild(closeButton);
-  tabsList.appendChild(listItem);
-  listItem.classList.add("ui-tabs-tab");
+  if(useTableTabs === true) {
+    //creating tab object
+    let tabObject = { 
+      name: tabs.length, 
+      minCol: minCol,
+      maxCol: maxCol,
+      minRow: minRow,
+      maxRow: maxRow
+    };
+    tabs.push(tabObject);
 
-  //close button
-  closeButton.dataset.tab=`tab-${tabs.length-1}`;
+    //creating new elements for the tabs
+    let listItem = document.createElement("li");
+    let closeButton = document.createElement("div");
+    closeButton.innerText = "x";
+    closeButton.classList.add("closeButton");
+    let anchor = document.createElement("a");
+    anchor.href = `#tab-${tabs.length-1}`;
+    anchor.innerText = `[${minCol},${maxCol}] x [${minRow},${maxRow}]`;
+    listItem.appendChild(anchor);
+    listItem.appendChild(closeButton);
+    tabsList.appendChild(listItem);
+    listItem.classList.add("ui-tabs-tab");
 
-  closeButton.addEventListener("click", e=>{
-    console.log(e);
-    $(`li[aria-controls='${e.target.dataset.tab}']`).remove();
-    $(`#${e.target.dataset.tab}`).remove();
-  })
+    //close button
+    closeButton.dataset.tab=`tab-${tabs.length-1}`;
 
-  let tableDiv = document.createElement("div");
-  tableDiv.id = `tab-${tabs.length-1}`;
-  tableTabs.appendChild(tableDiv);
+    closeButton.addEventListener("click", e=>{
+      $(`li[aria-controls='${e.target.dataset.tab}']`).remove();
+      $(`#${e.target.dataset.tab}`).remove();
+    })
+
+    tableDiv = document.createElement("div");
+    tableDiv.id = `tab-${tabs.length-1}`;
+    tableTabs.appendChild(tableDiv);
+  }//end if
+  
 
   var error = document.getElementById("message");
 
@@ -95,9 +113,10 @@ function generateTable(minCol, maxCol, minRow, maxRow) {
           }
         }
     }
+
   //printing the table
   table.innerHTML=result;
-  tableDiv.appendChild(table);
+  useTableTabs === true ? tableDiv.appendChild(table) : dynamicTable.appendChild(table);
   
   //re-initialization of the tabs
   if ($('#tableTabs').tabs()) {
@@ -105,7 +124,6 @@ function generateTable(minCol, maxCol, minRow, maxRow) {
   }
 
   $("#tableTabs").tabs( { "active" : tabs.length-1});
-
 
   $('#removeAllTabs').on( 'click', function() {
     //removes the tables in tabs
@@ -116,8 +134,6 @@ function generateTable(minCol, maxCol, minRow, maxRow) {
   return false;
 }
 
-//Function to validate user's input
-$(function() {
   //Methods that I added for validation
   //Checks if maxCol is greater than minCol and maxRow is greater than minRow: returns true if it is or false otherwise
   $.validator.addMethod('greaterThan', function(value, element, params) {
@@ -205,7 +221,7 @@ $(function() {
       var maxCol = parseInt(document.getElementById("maxCol").value);
       var minRow = parseInt(document.getElementById("minRow").value);
       var maxRow = parseInt(document.getElementById("maxRow").value);
-      generateTable(minCol, maxCol, minRow, maxRow);
+      generateTable(minCol, maxCol, minRow, maxRow, true);
       return false;
     }
   });//end validate
@@ -219,6 +235,7 @@ $(function() {
     slide: function(event, ui) {
       $( "#minCol" ).val( ui.value );
       $(ui.value).val($('#minCol').val());
+      fillDynamicTable();
     },
   });
   $("#minCol").change(function() {
@@ -233,10 +250,12 @@ $(function() {
     slide: function(event, ui) {
       $( "#maxCol" ).val( ui.value );
       $(ui.value).val($('#maxCol').val());
+      fillDynamicTable();
     },
   });
   $("#maxCol").change(function() {
     $('.sliderMC2').slider("value", $(this).val());
+
   });
 
   $('.sliderMR').slider({
@@ -247,10 +266,12 @@ $(function() {
     slide: function(event, ui) {
       $( "#minRow" ).val( ui.value );
       $(ui.value).val($('#minRow').val());
+      fillDynamicTable();
     },
   });
   $("#minRow").change(function() {
     $('.sliderMR').slider("value", $(this).val());
+
   });
 
   $('.sliderMR2').slider({
@@ -261,12 +282,12 @@ $(function() {
     slide: function(event, ui) {
       $( "#maxRow" ).val( ui.value );
       $(ui.value).val($('#maxRow').val());
+      fillDynamicTable();
     },
   });
   $("#maxRow").change(function() {
     $('.sliderMR2').slider("value", $(this).val());
   });
 
-  });//end function
+});//end function
 
-});

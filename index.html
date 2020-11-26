@@ -7,6 +7,7 @@
  freely copied or excerpted for educational purposes with credit to the author.
  updated by AS on November 24, 2020 at 12:30 PM
 -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,8 +19,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     
-    
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -43,32 +42,32 @@
         <div class="col-sm-12">
           <input class="form-control inputfield" id="minCol" name="minCol" value="-50">
         </div>
-        <div id="minColSlider" class="sliderMC"></div>
+        <div id="minColSlider" class="sliderMC slider"></div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-10" for="maxCol">Maximum Column Value:</label>
         <div class="col-sm-12">
           <input class="form-control inputfield" id="maxCol" name="maxCol" value="-50">
         </div>
-        <div id="maxColSlider" class="sliderMC2"></div>
+        <div id="maxColSlider" class="sliderMC2 slider"></div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-10" for="minRow">Minimum Row Value:</label>
         <div class="col-sm-12">
           <input class="form-control inputfield" id="minRow" name="minRow" value="-50">
         </div>
-        <div id="minRowSlider" class="sliderMR"></div>
+        <div id="minRowSlider" class="sliderMR slider"></div>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-10" for="maxRow">Maximum Row Value:</label>
         <div class="col-sm-12">
           <input class="form-control inputfield" id="maxRow" name="maxRow" value="-50">
         </div>
-        <div id="maxRowSlider" class="sliderMR2"></div>
+        <div id="maxRowSlider" class="sliderMR2 slider"></div>
       </div>
       <div class="form-group button-group">
         <div class="col-sm-6">
-          <button type="submit" class="btn btn-secondary purple-background black">Generate</button>
+          <button type="submit" class="btn btn-secondary purple-background black">Generate a Tab</button>
         </div>
 
         <!-- Button to remove tabs. -->
@@ -86,12 +85,16 @@
 <div id="message">
 </div>
 
+<div id="dynamicTable">
+
+</div>
+
+
 <!-- Table tabs. -->
- <div id="tableTabs">
+<div id="tableTabs">
   <ul id="tabsList">
   </ul>
 </div>
-
 
   </body>
 </html>

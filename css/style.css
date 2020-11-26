@@ -139,3 +139,10 @@ It is centered and red. */
   justify-content: space-between;
   align-items: center;
 }
+
+/* Dynamic table styling. */
+#dynamicTable {
+  overflow: scroll;
+  width: 85%;
+  margin: 30px auto;
+}
